@@ -1,0 +1,682 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    list-style-type: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+body {
+    height: 100%;
+    font-family: Microsoft YaHei;
+    background-color: #494949;
+}
+
+main {
+    margin: 0 auto;
+    height: 100%;
+    background-color: white;
+}
+
+#board {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 90rem;
+    padding: 1rem 0rem 1rem 0rem;
+    background-size: 100%;
+    background-color: #f4dac1;
+    /* border-radius: 30px; */
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+
+.title {
+    background-color: #494949;
+    text-align: center;
+    font-size: 1.1rem;
+    padding: 1rem 0;
+    font-weight: 600;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+
+
+/* -------------------- 顶栏 -----------*/
+
+nav {
+    font-size: 1.2rem;
+    font-weight: 600;
+    display: flex;
+    justify-content: space-evenly;
+    margin: 0px auto;
+    width: 100%;
+}
+
+nav a {
+    text-decoration: none;
+    text-align: center;
+    color: #494949;
+    padding: 0.1rem 1rem 0.2rem 1rem;
+    border-radius: 0.4rem;
+    background-color: #a3a3a3;
+    border: 0.1rem solid rgb(46, 46, 46);
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+
+nav a:hover {
+    text-decoration: none;
+    color: #494949;
+    background-color: #ffd57c;
+}
+
+nav a:active {
+    background-color: #ffae00;
+    color: #494949;
+}
+
+.current {
+    background-color: #ffd57c;
+}
+
+
+/*----------------- 顶部翻牌计次及对话框开始 -------------------*/
+
+.dash1 {
+    padding: 0rem 1.2rem;
+}
+
+#dashboard {
+    text-align: center;
+    padding: 0rem 0;
+    margin-bottom: 1.3rem;
+    /* border: 0.3rem solid #383838;
+    border: 0.3rem solid #c4c4c4; */
+    border: 0.3rem solid #838383;
+    /*background-color: #494a4b; */
+    -webkit-border-radius: 0.8rem;
+    -moz-border-radius: 0.8rem;
+    border-radius: 0.8rem;
+    width: 100%;
+}
+
+#dashboard.dashbg {
+    background: linear-gradient(to right, rgba(255, 227, 133) 50%, transparent 0);
+    background: linear-gradient(to right, #89b000 50%, transparent 0);
+    background: linear-gradient(to right, #b5ff70 50%, transparent 0);
+    background: linear-gradient(to right, rgb(20, 58, 88) 50%, transparent 0);
+    background-size: 200% 100%;
+    background-position: right;
+    animation: makeItfadeIn 1.2s 0s forwards;
+}
+
+@keyframes makeItfadeIn {
+    100% {
+        background-position: left;
+    }
+}
+
+#dashboard.winbg {
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 50%, #971919 50%);
+    background-size: 100% 200%;
+    background-position: bottom;
+    transition: all 0.5s ease-out;
+}
+
+
+/* --------------- 底部条 ----------------*/
+
+#counterTimer {
+    width: 100%;
+    font-weight: 600;
+    font-size: 1.2rem;
+    text-align: center;
+    margin-top: 0.2rem;
+    margin-bottom: 0.3rem;
+}
+
+.barOuter {
+    margin: 0.7rem auto;
+    background: #3f3f3f;
+    border: 0.1rem solid rgb(167, 167, 167);
+    border-radius: 8px;
+    box-shadow: inset 1px 1px 3px 0 rgba(0, 0, 0, 1), 1px 1px 3px 0 rgba(255, 255, 255, 0.12);
+    box-shadow: inset 0.1rem 0.1rem 0.3rem 0 rgba(0, 0, 0, 1), 0.1rem 0.1rem 0.4rem 0 rgba(255, 255, 255, 0.12);
+    height: 1.2rem;
+    width: 70%;
+    position: relative;
+}
+
+
+/* 对话头像 */
+
+
+/*------------- memory-game -------------*/
+
+#memory-game {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    /* perspective: 1000px; */
+    /* background-color: antiquewhite;*/
+}
+
+#memory-game.hide {
+    display: none;
+}
+
+.card {
+    width: 26%;
+    max-width: 8.5rem;
+    margin: 0rem 0.40rem 1rem 0.40rem;
+    /*transform: scale(1);*/
+    border-radius: 0.5rem;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    /* Controls the speed of flipping */
+    transition: transform .3s;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, .3);
+}
+
+.card:after {
+    content: '';
+    display: block;
+    padding-top: 100%;
+}
+
+.card img {
+    border-radius: 0.5rem;
+}
+
+.card:hover {
+    transform: scale(1.07);
+    transition: transform 0.3s;
+}
+
+.card:active {
+    /*transform: scale(0.97);*/
+    /*transition: transform .9s;*/
+}
+
+
+/* In scripts.js file we added this.classList.add('flip'); */
+
+.card.flip {
+    transform: rotateY(180deg);
+}
+
+.front-face,
+.back-face {
+    width: 100%;
+    height: 100%;
+    padding: 0px;
+    position: absolute;
+    background: #a07500;
+    background: #dadada;
+    backface-visibility: hidden;
+}
+
+.front-face {
+    transform: rotateY(180deg);
+}
+
+.w0 {
+    width: 0%;
+    background-color: rgb(255, 153, 0);
+    height: 20px;
+    border-radius: 0 4px 4px 0;
+    background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.05));
+    background-image: -moz-linear-gradient(top, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.05));
+    background-image: -o-linear-gradient(top, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.05));
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.05));
+    -webkit-transition: 0.4s linear;
+    -moz-transition: 0.4s linear;
+    -o-transition: 0.4s linear;
+    transition: 0.4s linear;
+    -webkit-transition-property: width, background-color;
+    -moz-transition-property: width, background-color;
+    -o-transition-property: width, background-color;
+    transition-property: width, background-color;
+    -webkit-box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.25), inset 0 1px rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.25), inset 0 1px rgba(255, 255, 255, 0.1);
+    background-size: 100% 100%, 20px 20px, 100% 100%;
+    background-image: linear-gradient(to bottom, rgba(0, 255, 255, 0.33) 0, rgba(0, 202, 192, 0.08) 50%, rgba(0, 0, 0, 0.25) 50%, rgba(0, 0, 0, 0.1) 100%), linear-gradient(45deg, rgba(0, 255, 242, 0.16) 25%, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0) 50%, rgba(0, 89, 255, 0.16) 50%, rgba(0, 255, 213, 0.16) 75%, rgba(0, 0, 0, 0) 75%, rgba(0, 0, 0, 0)), linear-gradient(to right, #8decd8, #02d9ff);
+    box-shadow: inset 0 1px 1px 0px rgba(3, 238, 255, 0.5), inset 0 -1px 1px 0px rgba(75, 243, 255, 0.25), 1px 1px 3px 0 rgba(0, 0, 0, 0.33);
+}
+
+.w1 {
+    width: 17%;
+    height: 20px;
+    background-color: #00f7ff;
+    border-right: 1px solid #090909;
+    border-radius: 7px;
+    height: 100%;
+    background-size: 100% 100%, 20px 20px, 100% 100%;
+    background-image: linear-gradient(to bottom, rgba(0, 255, 255, 0.33) 0, rgba(0, 202, 192, 0.08) 50%, rgba(0, 0, 0, 0.25) 50%, rgba(0, 0, 0, 0.1) 100%), linear-gradient(45deg, rgba(0, 255, 242, 0.16) 25%, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0) 50%, rgba(0, 89, 255, 0.16) 50%, rgba(0, 255, 213, 0.16) 75%, rgba(0, 0, 0, 0) 75%, rgba(0, 0, 0, 0)), linear-gradient(to right, #8decd8, #02d9ff);
+    box-shadow: inset 0 1px 1px 0px rgba(3, 238, 255, 0.5), inset 0 -1px 1px 0px rgba(75, 243, 255, 0.25), 1px 1px 3px 0 rgba(0, 0, 0, 0.33);
+}
+
+.w2 {
+    width: 34%;
+    height: 20px;
+    background-color: aqua;
+    background-color: #00f7ff;
+    border-right: 1px solid #090909;
+    border-radius: 7px;
+    height: 100%;
+    background-size: 100% 100%, 20px 20px, 100% 100%;
+    background-image: linear-gradient(to bottom, rgba(0, 255, 255, 0.33) 0, rgba(0, 202, 192, 0.08) 50%, rgba(0, 0, 0, 0.25) 50%, rgba(0, 0, 0, 0.1) 100%), linear-gradient(45deg, rgba(0, 255, 242, 0.16) 25%, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0) 50%, rgba(0, 89, 255, 0.16) 50%, rgba(0, 255, 213, 0.16) 75%, rgba(0, 0, 0, 0) 75%, rgba(0, 0, 0, 0)), linear-gradient(to right, #8decd8, #02d9ff);
+    box-shadow: inset 0 1px 1px 0px rgba(3, 238, 255, 0.5), inset 0 -1px 1px 0px rgba(75, 243, 255, 0.25), 1px 1px 3px 0 rgba(0, 0, 0, 0.33);
+}
+
+.w3 {
+    width: 51%;
+    height: 20px;
+    background-color: #00f7ff;
+    border-right: 1px solid #090909;
+    border-radius: 7px;
+    height: 100%;
+    background-size: 100% 100%, 20px 20px, 100% 100%;
+    background-image: linear-gradient(to bottom, rgba(0, 255, 255, 0.33) 0, rgba(0, 202, 192, 0.08) 50%, rgba(0, 0, 0, 0.25) 50%, rgba(0, 0, 0, 0.1) 100%), linear-gradient(45deg, rgba(0, 255, 242, 0.16) 25%, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0) 50%, rgba(0, 89, 255, 0.16) 50%, rgba(0, 255, 213, 0.16) 75%, rgba(0, 0, 0, 0) 75%, rgba(0, 0, 0, 0)), linear-gradient(to right, #8decd8, #02d9ff);
+    box-shadow: inset 0 1px 1px 0px rgba(3, 238, 255, 0.5), inset 0 -1px 1px 0px rgba(75, 243, 255, 0.25), 1px 1px 3px 0 rgba(0, 0, 0, 0.33);
+}
+
+.w4 {
+    width: 68%;
+    height: 20px;
+    background-color: #00f7ff;
+    border-right: 1px solid #090909;
+    border-radius: 7px;
+    height: 100%;
+    background-size: 100% 100%, 20px 20px, 100% 100%;
+    background-image: linear-gradient(to bottom, rgba(0, 255, 255, 0.33) 0, rgba(0, 202, 192, 0.08) 50%, rgba(0, 0, 0, 0.25) 50%, rgba(0, 0, 0, 0.1) 100%), linear-gradient(45deg, rgba(0, 255, 242, 0.16) 25%, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0) 50%, rgba(0, 89, 255, 0.16) 50%, rgba(0, 255, 213, 0.16) 75%, rgba(0, 0, 0, 0) 75%, rgba(0, 0, 0, 0)), linear-gradient(to right, #8decd8, #02d9ff);
+    box-shadow: inset 0 1px 1px 0px rgba(3, 238, 255, 0.5), inset 0 -1px 1px 0px rgba(75, 243, 255, 0.25), 1px 1px 3px 0 rgba(0, 0, 0, 0.33);
+}
+
+.w5 {
+    width: 85%;
+    height: 20px;
+    background-color: #00f7ff;
+    border-right: 1px solid #090909;
+    border-radius: 7px;
+    height: 100%;
+    background-size: 100% 100%, 20px 20px, 100% 100%;
+    background-image: linear-gradient(to bottom, rgba(0, 255, 255, 0.33) 0, rgba(0, 202, 192, 0.08) 50%, rgba(0, 0, 0, 0.25) 50%, rgba(0, 0, 0, 0.1) 100%), linear-gradient(45deg, rgba(0, 255, 242, 0.16) 25%, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0) 50%, rgba(0, 89, 255, 0.16) 50%, rgba(0, 255, 213, 0.16) 75%, rgba(0, 0, 0, 0) 75%, rgba(0, 0, 0, 0)), linear-gradient(to right, #8decd8, #02d9ff);
+    box-shadow: inset 0 1px 1px 0px rgba(3, 238, 255, 0.5), inset 0 -1px 1px 0px rgba(75, 243, 255, 0.25), 1px 1px 3px 0 rgba(0, 0, 0, 0.33);
+}
+
+.w6 {
+    width: 100%;
+    height: 20px;
+    background-color: #00f7ff;
+    border-right: 1px solid #090909;
+    border-radius: 7px;
+    height: 100%;
+    background-size: 100% 100%, 20px 20px, 100% 100%;
+    background-image: linear-gradient(to bottom, rgba(0, 255, 255, 0.33) 0, rgba(0, 202, 192, 0.08) 50%, rgba(0, 0, 0, 0.25) 50%, rgba(0, 0, 0, 0.1) 100%), linear-gradient(45deg, rgba(0, 255, 242, 0.16) 25%, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0) 50%, rgba(0, 89, 255, 0.16) 50%, rgba(0, 255, 213, 0.16) 75%, rgba(0, 0, 0, 0) 75%, rgba(0, 0, 0, 0)), linear-gradient(to right, #8decd8, #02d9ff);
+    box-shadow: inset 0 1px 1px 0px rgba(3, 238, 255, 0.5), inset 0 -1px 1px 0px rgba(75, 243, 255, 0.25), 1px 1px 3px 0 rgba(0, 0, 0, 0.33);
+}
+
+
+/* ---------------- Restart Button Start -----------------------*/
+
+#topline {
+    display: flex;
+}
+
+#restartButton {
+    margin: 0.4rem 0 0.4rem 0.4rem;
+    padding: 0.3rem 0.3rem;
+    border: 0.1rem solid white;
+    font-size: 0.9rem;
+    -webkit-border-radius: 0.5rem;
+    -moz-border-radius: 0.5rem;
+    border-radius: 0.5rem;
+    outline: none;
+    color: #fff;
+    background: #111;
+    cursor: pointer;
+    position: relative;
+    z-index: 0;
+}
+
+#restartButton.hide {
+    display: none;
+}
+
+#restartButton:active {
+    transform: translateY(0px);
+}
+
+#restartText {
+    margin: 5px 0px;
+}
+
+#restartButton:before {
+    content: '';
+    background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+    background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #55adff, #73fa66, #ff00c8, #ff0000);
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    background-size: 400%;
+    z-index: -1;
+    filter: blur(5px);
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    animation: glowing 20s linear infinite;
+    opacity: 0;
+    transition: opacity .3s ease-in-out;
+    -webkit-border-radius: 0.6rem;
+    -moz-border-radius: 0.6rem;
+    border-radius: 0.6rem;
+}
+
+#restartButton:active {
+    color: #000
+}
+
+#restartButton:active:after {
+    background: transparent;
+}
+
+#restartButton:hover:before {
+    opacity: 1;
+}
+
+#restartButton:after {
+    z-index: -1;
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #111;
+    left: 0;
+    top: 0;
+    -webkit-border-radius: 0.4rem;
+    -moz-border-radius: 0.4rem;
+    border-radius: 0.4rem;
+}
+
+@keyframes glowing {
+    0% {
+        background-position: 0 0;
+    }
+    50% {
+        background-position: 400% 0;
+    }
+    100% {
+        background-position: 0 0;
+    }
+}
+
+.modal {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(1.1);
+    transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
+}
+
+.modal-content {
+    padding: 1rem;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    border-radius: 0.6em;
+    box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.5);
+    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(255, 255, 255, 0.32) 0px 2px 16px 0px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(148, 148, 148, 0.267) 0px -12px 30px, rgba(161, 161, 161, 0.315) 0.12 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    background-image: linear-gradient( 95.2deg, rgba(173, 252, 234, 1) 26.8%, rgba(192, 229, 246, 1) 64%);
+}
+
+.show-modal {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1.0);
+    transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
+}
+
+#modalText {
+    font-size: 1rem;
+    line-height: 2rem;
+}
+
+#modalImg {
+    width: 70%;
+}
+
+#modalImg.hide {
+    display: none;
+}
+
+.close-button {
+    width: 1.5rem;
+    padding: 0 0.5rem;
+    line-height: 1.5rem;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 0.25rem;
+    background-color: lightgray;
+}
+
+.close-button:hover {
+    background-color: darkgray;
+}
+
+.animate-charcter {
+    margin: 0.8rem 0;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    background-image: linear-gradient( -225deg, #231557 0%, #44107a 29%, #ff1361 67%, #fff800 100%);
+    background-size: auto auto;
+    background-clip: border-box;
+    background-size: 200% auto;
+    color: #fff;
+    background-clip: text;
+    -text-fill-color: transparent;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: textclip 2.5s linear infinite;
+    display: inline-block;
+    font-weight: bolder;
+}
+
+@keyframes textclip {
+    0% {
+        background-position: 200% center;
+    }
+}
+
+.info {
+    text-align: center;
+    padding-top: 1rem;
+    padding-bottom: 0.4rem;
+    background-color: #b1fff9;
+    background-color: #494949;
+    color: white;
+    font-size: 1rem;
+}
+
+.info_sub {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+#colorPicker {
+    padding: 0.1rem 0.8rem 0.2rem 0.8rem;
+    border: 0.2rem solid white;
+    border-radius: 1rem;
+    background-color: #ffd57c;
+    cursor: pointer;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+
+#link {
+    padding: 0.1rem 0.8rem 0.2rem 0.8rem;
+    border: 0.2rem solid white;
+    border-radius: 1rem;
+    color: white;
+    background-color: #6d2200;
+    background-color: #ad3700;
+    cursor: pointer;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+
+#link img {
+    width: 1.1rem;
+}
+
+#colorPicker:active {
+    background-color: #d39000;
+}
+
+.source a button {
+    color: white;
+    display: block;
+    display: inline-block;
+    display: flex;
+    justify-content: center;
+}
+
+.source span {
+    margin-right: 0.3rem;
+}
+
+.source img {
+    width: 1.2rem;
+}
+
+#author {
+    font-size: 0.9rem;
+    margin-top: 1rem;
+    text-align: center;
+    color: rgb(116, 116, 116);
+}
+
+#author a {
+    color: rgb(116, 116, 116);
+}
+
+
+/* ---------------- (Restart Button End) -----------------------*/
+
+
+/* ------------------ Rocket ---------------------*/
+
+#rocket.hide {
+    display: none;
+}
+
+#rocket img {
+    width: 30%;
+    max-width: 10rem;
+}
+
+.flier {
+    pointer-events: none;
+}
+
+.flier>* {
+    /* Adjust animation duration to change the element’s speed */
+    animation: fly 1.8s linear 1;
+    pointer-events: none !important;
+    top: 18%;
+    /* transform: translateX(-120%) translateY(-120%) rotateZ(0);*/
+    position: fixed;
+    animation-delay: 0s;
+    z-index: 999999;
+}
+
+@keyframes fly {
+    0% {
+        left: -5rem;
+    }
+    100% {
+        left: 100%;
+    }
+}
+
+#log {
+    background-color: rgb(250, 250, 250);
+    padding: 1rem;
+    text-align: left;
+    height: 30rem;
+}
+
+#log #log-item {
+    margin-bottom: 1rem;
+}
+
+table {
+    border-collapse: collapse;
+    font-size: 1rem;
+}
+
+th,
+td {
+    padding: 1rem 1rem;
+    text-align: center;
+}
+
+thead th {
+    color: #fff;
+    width: 25%;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f8f9fa;
+}
+
+tbody tr:nth-child(odd) {
+    background-color: #e9ecef;
+}
+
+.timer {
+    display: flex;
+    justify-content: center;
+    /* background: rgb(43, 43, 43); */
+    height: 3rem;
+    -webkit-border-radius: 0.5rem;
+    -moz-border-radius: 0.5rem;
+    border-radius: 0.5rem;
+}
+
+.timer__part {
+    font-size: 1.5rem;
+    height: 3rem;
+    line-height: 3rem;
+    font-weight: bold;
+    margin: 0 0.2rem;
+}
+
+.timer__btn {
+    font-size: 0.9rem;
+    border: none;
+    color: white;
+    background: #055991;
+    cursor: pointer;
+    border-radius: 1rem;
+    margin: 0.5rem 1rem;
+    padding: 0 0.7rem;
+    border: 2px solid rgb(168, 168, 168);
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+
+.timer__btn--start {
+    background: #e96900;
+}
+
+.timer__btn--stop {
+    background: #16bd00;
+}

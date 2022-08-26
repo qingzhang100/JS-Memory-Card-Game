@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory Card Game</title>
+    <link rel="stylesheet" href="speed_styles_mobile.css">
+
+</head>
+
+<body>
+    <main>
+        <div class="title">
+            <nav>
+                <a href="index.html">Speed</a>
+                <a href="move.html">Move</a>
+                <a href="countdown.html" class="current">Countdown</a>
+            </nav>
+        </div>
+        <div id="board">
+
+            <div class="dash1">
+                <!-- Dashboard -->
+                <div id="dashboard">
+
+                    <div class="timer"></div>
+
+                </div>
+
+            </div>
+            <div id="memory-game"> </div>
+
+            <!-- (end of memory-game)-->
+
+
+
+            <!---------- pop up modal ---------->
+            <!--  </section>-->
+            <div class="modal">
+                <div class="modal-content">
+                    <span id="modalText"></span>
+                    <img id="modalImg" src="img/head/pathhead3.png" class="hide">
+                    <!-- <span class="close-button">&times;</span> -->
+                    <br>
+                    <span class="close-button">OK</span>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="info">
+            <div class="info_sub">
+                <button id="colorPicker" onclick="switchSound()">Color Switch</button>
+                <a href="level.html"><button id="colorPicker">Level</button></a>
+
+                <a href="" target="_blank">
+                    <button id="link">Links</button>
+                </a>
+            </div>
+
+            <div id="author">
+
+                <span>Code: Qing Zhang</span>
+                <span> (<a href="log.html"><u>Update Log</u></a>) </span>
+
+            </div>
+        </div>
+    </main>
+    <audio src="sound/start3.mp3" preload="auto" id="startSound"></audio>
+    <audio src="sound/shutdown.mp3" preload="auto" id="shutSound"></audio>
+
+    <audio src="sound/Card_Game_Movement_Tap_02_1.mp3" preload="auto" id="tap"></audio>
+    <audio src="sound/sword2.mp3" preload="auto" id="flipSound"></audio>
+    <audio src="sound/Bling4.mp3" preload="auto" id="match"></audio>
+    <audio source src="./sound/ItemGet3.mp3" preload="auto" id="cardGet"></audio>
+
+    <script src="countdown_scripts_mobile.js"></script>
+</body>
+
+</html>

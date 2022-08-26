@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory Card Game</title>
+    <link rel="stylesheet" href="speed_styles_mobile.css">
+
+    <!-- Card memory game, made for fun -->
+</head>
+
+<body>
+
+    <main>
+        <div class="title">
+
+            <nav>
+                <a href="index.html">Speed</a>
+                <a href="move.html">Move</a>
+                <a href="countdown.html">Countdown</a>
+            </nav>
+        </div>
+        <div id="board">
+
+            <div class="dash1">
+                <!-- Dashboard -->
+                <div id="dashboard">
+                    <h3 style="background-color:rgb(32, 32, 32); color: white; padding: 0.4rem 0;">Level</h3>
+                    <table>
+                        <thead>
+                            <tr style="background-color: #00743a;">
+                                <th> Speed Mode </th>
+                                <th> Level </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td> &lt;= 12 seconds </td>
+                                <th> <span style="color:rgb(139, 0, 0)">War God</span></th>
+
+                            </tr>
+                            <tr>
+                                <td> 13 seconds - 18 seconds</td>
+                                <th> Cavalry </th>
+
+                            </tr>
+
+                            <tr>
+                                <td> &gt;= 19 seconds</td>
+                                <th> Infantry </th>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table>
+                        <thead>
+                            <tr style="background-color: #303b5c;">
+                                <th> Move Mode </th>
+                                <th> Level </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td> &lt;= 17 moves </td>
+                                <th> <span style="color:rgb(139, 0, 0)">War God</span></th>
+
+                            </tr>
+                            <tr>
+                                <td> 18 moves - 24 moves</td>
+                                <th> Cavalry </th>
+
+                            </tr>
+                            <tr>
+                                <td> 25 moves - 40 moves </td>
+                                <th> Infantry </th>
+                            </tr>
+                            <tr>
+                                <td> &gt;= 41 moves</td>
+                                <th> militia </th>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div style="text-align:center;">
+                <a href="#" onClick="javascript:history.go(-1);"><button id="colorPicker">Return</button></a>
+            </div>
+        </div>
+
+        <div class="info">
+            <div class="info_sub">
+
+                <a href="level.html"><button id="colorPicker">Level</button></a>
+
+                <a href="" target="_blank">
+                    <button id="link">Links</button>
+                </a>
+            </div>
+
+            <div id="author">
+
+                <span>Code: Qing Zhang</span>
+                <span> (<a href="log.html"><u>Update Log</u></a>) </span>
+
+            </div>
+        </div>
+    </main>
+
+</body>
+
+</html>

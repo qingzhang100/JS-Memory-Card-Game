@@ -28,7 +28,12 @@ var cardDeck = [
     { name: "25.png", image: "img/cards/25.png" }, // new add 
     { name: "26.png", image: "img/cards/26.png" }, // new add 
     { name: "27.png", image: "img/cards/27.png" }, // new add 
-    { name: "28.png", image: "img/cards/28.png" }
+    { name: "28.png", image: "img/cards/28.png" },
+    { name: "29.png", image: "img/cards/29.png" },
+    { name: "30.png", image: "img/cards/30.png" },
+    { name: "31.png", image: "img/cards/31.png" },
+    { name: "32.png", image: "img/cards/32.png" },
+    { name: "33.png", image: "img/cards/33.png" }
 ]
 
 // Declare cardSet for all cards

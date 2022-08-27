@@ -42,7 +42,7 @@ main {
 }
 
 
-/* -------------------- 顶栏 -----------*/
+/* -------------------- Navigation -----------*/
 
 nav {
     font-size: 1.2rem;
@@ -80,7 +80,7 @@ nav a:active {
 }
 
 
-/*----------------- 顶部翻牌计次及对话框开始 -------------------*/
+/*----------------- Dashboard -------------------*/
 
 .dash1 {
     padding: 0rem 1.2rem;
@@ -124,7 +124,7 @@ nav a:active {
 }
 
 
-/* --------------- 底部条 ----------------*/
+/* --------------- Counter and Timer ----------------*/
 
 #counterTimer {
     width: 100%;
@@ -146,9 +146,6 @@ nav a:active {
     width: 70%;
     position: relative;
 }
-
-
-/* 对话头像 */
 
 
 /*------------- memory-game -------------*/
@@ -194,14 +191,6 @@ nav a:active {
     transform: scale(1.07);
     transition: transform 0.3s;
 }
-
-.card:active {
-    /*transform: scale(0.97);*/
-    /*transition: transform .9s;*/
-}
-
-
-/* In scripts.js file we added this.classList.add('flip'); */
 
 .card.flip {
     transform: rotateY(180deg);
@@ -572,7 +561,7 @@ nav a:active {
 /* ---------------- (Restart Button End) -----------------------*/
 
 
-/* ------------------ Rocket ---------------------*/
+/* ------------------ Flying Object in the Move Mode ---------------------*/
 
 #rocket.hide {
     display: none;

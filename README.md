@@ -2,4 +2,4 @@
 
 A memory card game made with JavaScript.
 
-This game has 3 modes: Regular mode, Speed mode
+This game has move-count mode and speed mode.

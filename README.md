@@ -2,6 +2,9 @@
 
 JavaScript, CSS, HTML, Bootstrap
 
-This game has move-count mode and speed mode.
+This game has 3 modes: Move/Count mode, Speed mode and Countdown mode.
 
-Click "Start" button to play!
+Link:
+https://castlehunter.github.io/warrior-memory-card-game/
+
+Remember to click "Start" button to play!

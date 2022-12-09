@@ -1,5 +1,7 @@
 # warrior-memory-card-game
 
-A memory card game made with JavaScript.
+JavaScript, CSS, HTML, Bootstrap
 
 This game has move-count mode and speed mode.
+
+Click "Start" button to play!

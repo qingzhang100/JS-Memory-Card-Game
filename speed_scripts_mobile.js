@@ -50,8 +50,6 @@ const shutSound = document.getElementById('shutSound')
 var cardGet = document.getElementById('cardGet')
 const tapSound = document.getElementById('tap')
 
-
-
 function switchSound() {
     tapSound.play()
 }
@@ -59,7 +57,6 @@ function switchSound() {
 var dialInterval;
 var winCount = 0;
 let msCount = 0;
-
 
 // ======================= Modal ===========================
 var modalText = document.getElementById('modalText')
@@ -78,45 +75,28 @@ function windowOnClick(event) {
     }
 }
 
-
 closeButton.addEventListener("click", toggleModal);
 window.addEventListener("click", windowOnClick);
 
 // ------------------------------- Card pool ---------------------------------//
 var cardDeck = [
-    { name: "1.png", image: "img/cards/1.png" }, // new add 
-    { name: "2.png", image: "img/cards/2.png" }, // new add 
-    { name: "3.png", image: "img/cards/3.png" }, // new add 
-    { name: "4.png", image: "img/cards/4.png" }, // new add 
-    { name: "5.png", image: "img/cards/5.png" }, // new add 
-    { name: "6.png", image: "img/cards/6.png" }, // new add 
-    { name: "7.png", image: "img/cards/7.png" }, // new add 
-    { name: "8.png", image: "img/cards/8.png" }, // new add 
-    { name: "9.png", image: "img/cards/9.png" }, // new add 
-    { name: "10.png", image: "img/cards/10.png" }, // new add 
-    { name: "11.png", image: "img/cards/11.png" }, // new add 
-    { name: "12.png", image: "img/cards/12.png" }, // new add 
-    { name: "13.png", image: "img/cards/13.png" }, // new add 
-    { name: "14.png", image: "img/cards/14.png" }, // new add 
-    { name: "15.png", image: "img/cards/15.png" }, // new add 
-    { name: "16.png", image: "img/cards/16.png" }, // new add 
-    { name: "17.png", image: "img/cards/17.png" }, // new add 
-    { name: "18.png", image: "img/cards/18.png" }, // new add 
-    { name: "19.png", image: "img/cards/19.png" }, // new add 
-    { name: "20.png", image: "img/cards/20.png" }, // new add 
-    { name: "21.png", image: "img/cards/21.png" }, // new add 
-    { name: "22.png", image: "img/cards/22.png" }, // new add 
-    { name: "23.png", image: "img/cards/23.png" }, // new add 
-    { name: "24.png", image: "img/cards/24.png" }, // new add 
-    { name: "25.png", image: "img/cards/25.png" }, // new add 
-    { name: "26.png", image: "img/cards/26.png" }, // new add 
-    { name: "27.png", image: "img/cards/27.png" }, // new add 
-    { name: "28.png", image: "img/cards/28.png" },
-    { name: "29.png", image: "img/cards/29.png" },
-    { name: "30.png", image: "img/cards/30.png" },
-    { name: "31.png", image: "img/cards/31.png" },
-    { name: "32.png", image: "img/cards/32.png" },
-    { name: "33.png", image: "img/cards/33.png" }
+    { name: "1.jpg", image: "img/cards/1.jpg" }, { name: "2.jpg", image: "img/cards/2.jpg" }, { name: "3.jpg", image: "img/cards/3.jpg" },
+    { name: "4.jpg", image: "img/cards/4.jpg" }, { name: "5.jpg", image: "img/cards/5.jpg" }, { name: "6.jpg", image: "img/cards/6.jpg" },
+    { name: "7.jpg", image: "img/cards/7.jpg" }, { name: "8.jpg", image: "img/cards/8.jpg" }, { name: "9.jpg", image: "img/cards/9.jpg" },
+    { name: "10.jpg", image: "img/cards/10.jpg" }, // new add 
+    { name: "11.jpg", image: "img/cards/11.jpg" }, // new add 
+    { name: "12.jpg", image: "img/cards/12.jpg" }, // new add 
+    { name: "13.jpg", image: "img/cards/13.jpg" }, // new add 
+    { name: "14.jpg", image: "img/cards/14.png" }, // new add 
+    { name: "15.jpg", image: "img/cards/15.png" }, // new add 
+    { name: "16.jpg", image: "img/cards/16.png" }, // new add 
+    { name: "17.jpg", image: "img/cards/17.png" }, // new add 
+    { name: "18.jpg", image: "img/cards/18.png" }, // new add 
+    { name: "19.jpg", image: "img/cards/19.png" }, // new add 
+    { name: "20.jpg", image: "img/cards/20.png" }, // new add 
+    { name: "21.jpg", image: "img/cards/21.png" }, // new add 
+    { name: "22.jpg", image: "img/cards/22.png" }, // new add 
+    { name: "23.jpg", image: "img/cards/23.png" }
 ]
 
 
@@ -163,10 +143,6 @@ matrixGenerator(cardValues, 12);
 
 barOuter.classList.add('hide');
 
-
-
-
-
 /*--------------------------- Background color pool -----------------------------------*/
 var colorArray = [
     'rgba(57, 100, 136, 0.877)', // navy
@@ -195,7 +171,7 @@ colorPicker.addEventListener('click', function color() {
 
 
 
-/* ---------- 时间 interval ------------ */
+/* ---------- interval ------------ */
 var imageInterval;
 let interval; // Store the setInterval(timeGenerator, 1000)
 
@@ -284,16 +260,13 @@ function flipCard() {
     // Add flip class to the card
     this.classList.add('flip');
 
-    if (!hasFlippedCard) { // If hasFlippedCard is false
-        // first click
+    if (!hasFlippedCard) { // If the card has not been flipped
         hasFlippedCard = true; // Set hasFlippedCard to true
         firstCard = this; // Set firstCard to this object
         return;
     } else {
         // second click
-
         secondCard = this;
-
     }
     checkForMatch();
 }
@@ -355,7 +328,7 @@ function checkForMatch() {
 
         msCount = minutes * 60 * 100 + seconds * 100 + mills
 
-        toggleModal(); // 弹出Modal
+        toggleModal(); // Modal pops up
         clearInterval(interval);
 
     }

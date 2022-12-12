@@ -80,42 +80,24 @@ window.addEventListener("click", windowOnClick);
 
 // ------------------------------- Card Pool ---------------------------------//
 var cardDeck = [
-
-    { name: "1.png", image: "img/cards/1.png" }, // new add 
-    { name: "2.png", image: "img/cards/2.png" }, // new add 
-    { name: "3.png", image: "img/cards/3.png" }, // new add 
-    { name: "4.png", image: "img/cards/4.png" }, // new add 
-    { name: "5.png", image: "img/cards/5.png" }, // new add 
-    { name: "6.png", image: "img/cards/6.png" }, // new add 
-    { name: "7.png", image: "img/cards/7.png" }, // new add 
-    { name: "8.png", image: "img/cards/8.png" }, // new add 
-    { name: "9.png", image: "img/cards/9.png" }, // new add 
-    { name: "10.png", image: "img/cards/10.png" }, // new add 
-    { name: "11.png", image: "img/cards/11.png" }, // new add 
-    { name: "12.png", image: "img/cards/12.png" }, // new add 
-    { name: "13.png", image: "img/cards/13.png" }, // new add 
-    { name: "14.png", image: "img/cards/14.png" }, // new add 
-    { name: "15.png", image: "img/cards/15.png" }, // new add 
-    { name: "16.png", image: "img/cards/16.png" }, // new add 
-    { name: "17.png", image: "img/cards/17.png" }, // new add 
-    { name: "18.png", image: "img/cards/18.png" }, // new add 
-    { name: "19.png", image: "img/cards/19.png" }, // new add 
-    { name: "20.png", image: "img/cards/20.png" }, // new add 
-    { name: "21.png", image: "img/cards/21.png" }, // new add 
-    { name: "22.png", image: "img/cards/22.png" }, // new add 
-    { name: "23.png", image: "img/cards/23.png" }, // new add 
-    { name: "24.png", image: "img/cards/24.png" }, // new add 
-    { name: "25.png", image: "img/cards/25.png" }, // new add 
-    { name: "26.png", image: "img/cards/26.png" }, // new add 
-    { name: "27.png", image: "img/cards/27.png" }, // new add 
-    { name: "28.png", image: "img/cards/28.png" },
-    { name: "29.png", image: "img/cards/29.png" },
-    { name: "30.png", image: "img/cards/30.png" },
-    { name: "31.png", image: "img/cards/31.png" },
-    { name: "32.png", image: "img/cards/32.png" },
-    { name: "33.png", image: "img/cards/33.png" }
+    { name: "1.jpg", image: "img/cards/1.jpg" }, { name: "2.jpg", image: "img/cards/2.jpg" }, { name: "3.jpg", image: "img/cards/3.jpg" },
+    { name: "4.jpg", image: "img/cards/4.jpg" }, { name: "5.jpg", image: "img/cards/5.jpg" }, { name: "6.jpg", image: "img/cards/6.jpg" },
+    { name: "7.jpg", image: "img/cards/7.jpg" }, { name: "8.jpg", image: "img/cards/8.jpg" }, { name: "9.jpg", image: "img/cards/9.jpg" },
+    { name: "10.jpg", image: "img/cards/10.jpg" }, // new add 
+    { name: "11.jpg", image: "img/cards/11.jpg" }, // new add 
+    { name: "12.jpg", image: "img/cards/12.jpg" }, // new add 
+    { name: "13.jpg", image: "img/cards/13.jpg" }, // new add 
+    { name: "14.jpg", image: "img/cards/14.png" }, // new add 
+    { name: "15.jpg", image: "img/cards/15.png" }, // new add 
+    { name: "16.jpg", image: "img/cards/16.png" }, // new add 
+    { name: "17.jpg", image: "img/cards/17.png" }, // new add 
+    { name: "18.jpg", image: "img/cards/18.png" }, // new add 
+    { name: "19.jpg", image: "img/cards/19.png" }, // new add 
+    { name: "20.jpg", image: "img/cards/20.png" }, // new add 
+    { name: "21.jpg", image: "img/cards/21.png" }, // new add 
+    { name: "22.jpg", image: "img/cards/22.png" }, // new add 
+    { name: "23.jpg", image: "img/cards/23.png" }
 ]
-
 
 let cardValues = [];
 //Pick random objects from the items array
@@ -157,9 +139,6 @@ const matrixGenerator = (cardValues, size = 18) => {
 
 matrixGenerator(cardValues, 18);
 
-
-
-
 // Declare cardSet for all cards
 var cardcard = document.querySelectorAll(".card");
 barOuter.classList.add('hide');
@@ -198,9 +177,6 @@ colorPicker.addEventListener('click', function color() {
     }
 })
 
-/* ------------------------- （ end of random battle ) ----------------------------*/
-
-
 /* ---------- Interval ------------ */
 
 let interval; // Store the setInterval(timeGenerator, 1000)
@@ -210,13 +186,10 @@ let lockBoard = false;
 
 let firstCard, secondCard;
 
-
-
 /*---------------------- Timer -----------------------*/
 //Initial Time
 let seconds = 0,
     minutes = 0;
-
 
 function yourTitle() {
     if (movesCount <= 17) {
@@ -392,14 +365,11 @@ function shuffle() {
 
 shuffle();
 
-
 function addRocket() {
     document.getElementById('rocket').classList.add('flier')
     document.getElementById('rocket').classList.remove('hide')
 
 }
-
-
 
 /*--------------- Generate Board ------------------*/
 function generateBoard() {
@@ -446,12 +416,11 @@ function startGame() {
         dashboard.classList.add('dashbg');
     }
 
-    counterTimer.innerHTML = `<span>步 数: 0</span>`
+    counterTimer.innerHTML = `<span>Moves: 0</span>`
     counterTimer.style.color = "white";
 
     bar.className = 'w0';
     bar.classList.remove('hide');
-
 
     // Generate Board
     generateBoard();

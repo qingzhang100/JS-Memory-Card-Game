@@ -87,16 +87,16 @@ var cardDeck = [
     { name: "11.jpg", image: "img/cards/11.jpg" }, // new add 
     { name: "12.jpg", image: "img/cards/12.jpg" }, // new add 
     { name: "13.jpg", image: "img/cards/13.jpg" }, // new add 
-    { name: "14.jpg", image: "img/cards/14.png" }, // new add 
-    { name: "15.jpg", image: "img/cards/15.png" }, // new add 
-    { name: "16.jpg", image: "img/cards/16.png" }, // new add 
-    { name: "17.jpg", image: "img/cards/17.png" }, // new add 
-    { name: "18.jpg", image: "img/cards/18.png" }, // new add 
-    { name: "19.jpg", image: "img/cards/19.png" }, // new add 
-    { name: "20.jpg", image: "img/cards/20.png" }, // new add 
-    { name: "21.jpg", image: "img/cards/21.png" }, // new add 
-    { name: "22.jpg", image: "img/cards/22.png" }, // new add 
-    { name: "23.jpg", image: "img/cards/23.png" }
+    { name: "14.jpg", image: "img/cards/14.jpg" }, // new add 
+    { name: "15.jpg", image: "img/cards/15.jpg" }, // new add 
+    { name: "16.jpg", image: "img/cards/16.jpg" }, // new add 
+    { name: "17.jpg", image: "img/cards/17.jpg" }, // new add 
+    { name: "18.jpg", image: "img/cards/18.jpg" }, // new add 
+    { name: "19.jpg", image: "img/cards/19.jpg" }, // new add 
+    { name: "20.jpg", image: "img/cards/20.jpg" }, // new add 
+    { name: "21.jpg", image: "img/cards/21.jpg" }, // new add 
+    { name: "22.jpg", image: "img/cards/22.jpg" }, // new add 
+    { name: "23.jpg", image: "img/cards/23.jpg" }
 ]
 
 

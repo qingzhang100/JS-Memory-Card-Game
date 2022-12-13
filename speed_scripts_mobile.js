@@ -1,6 +1,5 @@
 var title = document.querySelector('.title')
 
-
 var titleArray = [
     'white.jpg',
     'pinkstar.jpg',

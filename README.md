@@ -1,7 +1,7 @@
 # warrior-memory-card-game
 
 <h3>Link</h3>
-https://castlehunter.github.io/Fantasy-Memory-Card-Game/<br>
+https://castlehunter.github.io/JS-Memory-Card-Game/<br>
 <br>
   <h3>Game Features</h3>
 1. Click the "start" button to play the game, every time the "start" button is pressed, the card board will be shuffled.<br>

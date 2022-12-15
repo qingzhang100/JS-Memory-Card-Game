@@ -1,6 +1,6 @@
-var title = document.querySelector('.title')
+// This file uses JQuery
 
-
+// ============= The top menu background image pool random generator ===============
 var titleBgArray = [
     'white.jpg',
     'pinkstar.jpg',
@@ -19,30 +19,14 @@ var titleBgArray = [
     'brgr.jpg'
 ]
 var aRamdomNum = Math.floor(Math.random() * titleBgArray.length);
-title.style.backgroundImage = "url(img/bg/" + titleBgArray[aRamdomNum] + ")";
-
-var board = document.getElementById('board')
-var dashboard = document.getElementById('dashboard')
-var colorPicker = document.getElementById('colorPicker')
-var data = document.getElementById('data')
-
-var counterTimer = document.getElementById('counterTimer')
-var counter = document.getElementById("counter")
-
+$(".title").css("background-image", "url(img/bg/" + titleBgArray[aRamdomNum] + ")");
+// ===================================================================================
 
 var memoryGame = document.getElementById("memory-game")
-var frame = document.getElementById("frame");
-
-
-var dial = document.getElementById('dial')
 var bar = document.getElementById('bar')
-var barOuter = document.querySelector('.barOuter')
-var restartButton = document.getElementById("restartButton");
-
 
 // ----------------- Sound -----------------
-const flipSound = document.getElementById('flipSound')
-
+const flipSound = document.getElementById('flipSound') // .play() can only be used on DOM
 const match = document.getElementById('match')
 const startButton = document.getElementById('startSound')
 var cardGet = document.getElementById('cardGet')
@@ -56,26 +40,21 @@ function switchSound() {
 }
 
 
-// ======================= Modal ===========================
-const modal = document.querySelector(".modal");
-var modalText = document.getElementById('modalText')
-var modalImg = document.getElementById('modalImg')
-const closeButton = document.querySelector(".close-button");
-
+// ------------------- Modal ------------------------
 
 function toggleModal() {
-    modal.classList.toggle("show-modal");
+    $(".modal").toggleClass("show-modal");
     imgSrc = 'img/head/pathhead3.png'
-    modalText.innerHTML = `${yourTitle()}`;
+    $("#modalText").html(`${yourTitle()}`);
 }
 
 function windowOnClick(event) {
-    if (event.target === modal) {
+    if (event.target === $(".modal")) {
         toggleModal();
     }
 }
 
-closeButton.addEventListener("click", toggleModal); // Close the modal
+$(".close-button").click(toggleModal); // Close the modal
 window.addEventListener("click", windowOnClick);
 
 // ------------------------------- Card Pool ---------------------------------//
@@ -83,7 +62,7 @@ var cardDeck = [
     { name: "1.jpg", image: "img/cards/1.jpg" }, { name: "2.jpg", image: "img/cards/2.jpg" }, { name: "3.jpg", image: "img/cards/3.jpg" },
     { name: "4.jpg", image: "img/cards/4.jpg" }, { name: "5.jpg", image: "img/cards/5.jpg" }, { name: "6.jpg", image: "img/cards/6.jpg" },
     { name: "7.jpg", image: "img/cards/7.jpg" }, { name: "8.jpg", image: "img/cards/8.jpg" }, { name: "9.jpg", image: "img/cards/9.jpg" },
-    { name: "10.jpg", image: "img/cards/10.jpg" }, // new add 
+    { name: "10.jpg", image: "img/cards/10.jpg" },
     { name: "11.jpg", image: "img/cards/11.jpg" }, // new add 
     { name: "12.jpg", image: "img/cards/12.jpg" }, // new add 
     { name: "13.jpg", image: "img/cards/13.jpg" }, // new add 
@@ -120,11 +99,10 @@ const generateRandom = (size = 9) => {
 generateRandom(9);
 
 const matrixGenerator = (cardValues, size = 18) => {
-    memoryGame.innerHTML = "";
+    $("#memory-game").html("");
+    // memoryGame.innerHTML = "";
     cardValues = [...cardValues, ...cardValues];
-    // //simple shuffle
-    cardValues.sort(() => Math.random() - 0.5);
-
+    cardValues.sort(() => Math.random() - 0.5); // simple shuffle
     for (let i = 0; i < 18; i++) {
         memoryGame.innerHTML += `
                              <div class="card" data-framework="${cardValues[i].name}">
@@ -133,24 +111,35 @@ const matrixGenerator = (cardValues, size = 18) => {
                     </div>
              `;
     }
+
+    // $("#memory-game").html(`
+    //                          <div class="card" data-framework="${cardValues[i].name}">
+    //                              <img class="front-face" src="${cardValues[i].image}" alt="front" />
+    //                              <img class="back-face" src="img/bg/9.png" alt="JS Badge" />
+    //                 </div>
+    //          `);
+
     //Grid
     memoryGame.style.gridTemplateColumns = `repeat(${size},auto)`;
 }
 
 matrixGenerator(cardValues, 18);
 
-// Declare cardSet for all cards
-var cardcard = document.querySelectorAll(".card");
-barOuter.classList.add('hide');
 
+
+$(".barOuter").addClass("hide");
 
 var dialInterval;
 var winCount = 0;
 let movesCount = 0;
 var resetCounter = 0;
 
-var colorArray = [
 
+// ---------------------------------------------------------
+//    Color Switch Button to change the background color
+// ---------------------------------------------------------
+
+var colorArray = [
     'rgba(57, 100, 136, 0.877)', // navy
     'rgba(255, 227, 133, 0.329)', // yellow
     'rgba(6, 145, 133, 0.329)', //green candy
@@ -165,12 +154,11 @@ var colorArray = [
     '#30404d', // cyberpunk
     '#422249', // dark purple
     '#f4dac1' // soo
-
 ]
 
-var j = 0
-colorPicker.addEventListener('click', function color() {
-    board.style.backgroundColor = colorArray[j];
+var j = 0;
+$("#colorPicker").click(function color() {
+    $("#board").css("background-color", colorArray[j]);
     j++;
     if (j == colorArray.length) {
         j = 0;
@@ -193,26 +181,26 @@ let seconds = 0,
 
 function yourTitle() {
     if (movesCount <= 17) {
-        modalImg.classList.remove('hide')
+        $("#modalImg").removeClass("hide")
         return `<p>Level<br>
                 <span class="animate-charcter">War God!</span></p>
             `;
     }
     if (movesCount > 17 && movesCount <= 24) {
         let gap = movesCount - 17;
-        modalImg.classList.add('hide')
+        $("#modalImg").addClass("hide")
         return `<p>Level: <span style="color: #860029;font-weight: 600;font-family: Verdana, Geneva, Tahoma, sans-serif;">Cavalry</span><br>
         [You are <span style="color: #860029; font-weight: 600; font-family: Verdana, Geneva, Tahoma, sans-serif;">${gap}</span> moves more than War God!]</p>`;
     }
     if (movesCount > 24 && movesCount <= 40) {
-        modalImg.classList.add('hide')
+        $("#modalImg").addClass("hide")
         let gap1 = movesCount - 24;
         let gap2 = movesCount - 17;
         return `<p>Level: <span style="color: #860029;font-weight: 600;font-family: Verdana, Geneva, Tahoma, sans-serif;">Infantry</span><br>
                 [You are <span style="font-family: Verdana, Geneva, Tahoma, sans-serif; color: #860029;font-weight: 600;">${gap1}</span> moves more than Cavalry!]<br>
                 [You are <span style="color: #860029; font-weight: 600; font-family: Verdana, Geneva, Tahoma, sans-serif;">${gap2}</span> moves more than War God!]</p>`;
     } else {
-        modalImg.classList.add('hide')
+        $("#modalImg").addClass("hide")
         let gap1 = movesCount - 40;
         let gap2 = movesCount - 17;
 
@@ -224,7 +212,7 @@ function yourTitle() {
 
 const movesCounter = () => {
     movesCount += 1;
-    counterTimer.innerHTML = `<span> Moves: ${movesCount}</span>`;
+    $("#counterTimer").html(`<span> Moves: ${movesCount}</span>`);
 };
 
 
@@ -258,23 +246,23 @@ function flipCard() {
 }
 
 
-function fillBar1() { bar.classList.add('w1') }
+function fillBar1() { $("#bar").addClass('w1') }
 
-function fillBar2() { bar.classList.add('w2') }
+function fillBar2() { $("#bar").addClass('w2') }
 
-function fillBar3() { bar.classList.add('w3') }
+function fillBar3() { $("#bar").addClass('w3') }
 
-function fillBar4() { bar.classList.add('w4') }
+function fillBar4() { $("#bar").addClass('w4') }
 
-function fillBar5() { bar.classList.add('w5') }
+function fillBar5() { $("#bar").addClass('w5') }
 
-function fillBar6() { bar.classList.add('w6') }
+function fillBar6() { $("#bar").addClass('w6') }
 
-function fillBar7() { bar.classList.add('w7') }
+function fillBar7() { $("#bar").addClass('w7') }
 
-function fillBar8() { bar.classList.add('w8') }
+function fillBar8() { $("#bar").addClass('w8') }
 
-function fillBar9() { bar.classList.add('w9') }
+function fillBar9() { $("#bar").addClass('w9') }
 
 
 /*----------------------- Check if match -----------------------*/
@@ -286,7 +274,6 @@ function checkForMatch() {
         disableCards();
         // matchDialogueGenerator()
         winCount += 1;
-
 
         if (winCount == 1) {
             fillBar1();
@@ -355,37 +342,43 @@ function resetBoard() {
 }
 
 /*----------------- shuffle Cards ------------------*/
+// Declare cardSet for all cards
+var cardcard = document.querySelectorAll(".card");
 
 function shuffle() {
     cardcard.forEach(card => {
         let randomPos = Math.floor(Math.random() * 18);
         card.style.order = randomPos;
     });
+
+    // --------- Error -------------
+    // $(".card").each(function(card) {
+    //     let randomPos = Math.floor(Math.random() * 18);
+    //     card.style.order = randomPos;
+    // })
 }
 
 shuffle();
 
 function addRocket() {
-    document.getElementById('rocket').classList.add('flier')
-    document.getElementById('rocket').classList.remove('hide')
-
+    $("#rocket").addClass("flier")
+    $("#rocket").removeClass("hide")
 }
 
 /*--------------- Generate Board ------------------*/
 function generateBoard() {
     generateRandom(9);
-
     matrixGenerator(cardValues, 18);
     shuffle();
 }
 
 /*--------------- addEventListener for card flip ------------------*/
 function listenFlip() {
-    var cardcard = document.querySelectorAll('.card')
-    for (let i = 0; i < cardcard.length; i++) {
-        cardcard[i].addEventListener('click', flipCard)
+
+    for (let i = 0; i < $(".card").length; i++) {
+        $(".card")[i].addEventListener('click', flipCard)
     }
-    cardcard.forEach(card => card.classList.remove('flip'))
+    $(".card").forEach(card => card.classList.remove('flip'))
 }
 
 
@@ -397,30 +390,33 @@ function startGame() {
     addRocket();
     resetBoard();
     setTimeout(() => {
-        document.getElementById('rocket').classList.add('hide')
+        $("#rocket").addClass("hide")
     }, 1700)
-    counterTimer.classList.remove('hide')
+    $("#counterTimer").removeClass('hide')
 
-    //result.classList.remove('hide')
-    barOuter.classList.remove('hide');
+    $("barOuter").removeClass("hide");
 
     // resetBoard();
     winCount = 0;
     movesCount = 0;
-    if (dashboard.classList.contains('dashbg')) {
-        dashboard.classList.remove('dashbg');
+
+    // If the dashboard has no background color, add background color. Otherwise remove background color then re-add it.
+    if ($("#dashboard").hasClass("dashbg")) {
+        $("#dashboard").removeClass("dashbg");
         setTimeout(() => {
-            dashboard.classList.add('dashbg');
+            $("#dashboard").addClass("dashbg");
         }, 1)
     } else {
-        dashboard.classList.add('dashbg');
+        $("#dashboard").addClass("dashbg");
     }
 
-    counterTimer.innerHTML = `<span>Moves: 0</span>`
-    counterTimer.style.color = "white";
+    $("#counterTimer").html(`<span>Moves: 0</span>`)
+
+    $("#counterTimer").css("color", "white")
 
     bar.className = 'w0';
-    bar.classList.remove('hide');
+
+    $("#bar").removeClass("hide");
 
     // Generate Board
     generateBoard();
@@ -429,4 +425,4 @@ function startGame() {
 }
 
 
-restartButton.addEventListener('click', startGame)
+$("#restartButton").click(startGame)

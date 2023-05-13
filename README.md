@@ -1,4 +1,4 @@
-# warrior-memory-card-game
+# memory-card-game
 
 <h3>Link</h3>
 https://castlehunter.github.io/JS-Memory-Card-Game/<br>
